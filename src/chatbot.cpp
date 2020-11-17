@@ -44,7 +44,27 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
+ChatBot::ChatBot(ChatBot&& that)
+{
+    std::cout << "ChatBot Move Constructor" << std::endl;
+    _chatLogic = that._chatLogic;
+    _rootNode = that._rootNode;
+    _image = that._image;
+    that._image = NULL;
+}
 
+ChatBot& ChatBot::operator=(ChatBot&& that)
+{
+    std::cout << "ChatBot Move Assignment" << std::endl;
+    if (this == &that)
+        return *this;
+
+    _chatLogic = that._chatLogic;
+    _rootNode = that._rootNode;
+    _image = that._image;
+    that._image = NULL;
+    return *this;
+}
 ////
 //// EOF STUDENT CODE
 
