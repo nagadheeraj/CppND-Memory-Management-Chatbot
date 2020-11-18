@@ -50,7 +50,14 @@ ChatBot::ChatBot(ChatBot&& that)
     _chatLogic = that._chatLogic;
     _rootNode = that._rootNode;
     _image = that._image;
+    _currentNode = that._currentNode;
+
+    that._chatLogic = nullptr;
+    that._rootNode = nullptr;
     that._image = NULL;
+    that._currentNode = nullptr;
+
+    _chatLogic->SetChatbotHandle(this);
 }
 
 ChatBot& ChatBot::operator=(ChatBot&& that)
@@ -62,7 +69,13 @@ ChatBot& ChatBot::operator=(ChatBot&& that)
     _chatLogic = that._chatLogic;
     _rootNode = that._rootNode;
     _image = that._image;
+    _currentNode = that._currentNode;
+
+    that._chatLogic = nullptr;
+    that._rootNode = nullptr;
     that._image = NULL;
+    that._currentNode = nullptr;
+    _chatLogic->SetChatbotHandle(this);
     return *this;
 }
 ////
